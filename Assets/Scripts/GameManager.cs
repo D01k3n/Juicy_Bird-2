@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
 
     Score _scorescript;
 
+    public GameObject PauseMenu;
+    public bool isPaused; 
+
     private void Start()//Defines variables/components
     {
         player = GameObject.Find("Player");
@@ -55,6 +58,21 @@ public class GameManager : MonoBehaviour
         else
         {
             scoreboard.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) //Paus menyn öppnas när man klickar på Escape knappen på tangentbordet.
+        {
+            if (isPaused) //Om det redan är pausat och man klickar på Resume eller Escape startas spelet igen. 
+            {
+                Resume();
+            }
+            else //Om det inte är pausat pausas spelet när man går in på paus menyn på Escape knappen. 
+            {
+                isPaused = true;
+                PauseMenu.SetActive(true);
+                Time.timeScale = 0f; 
+            }
+
         }
     }
 
@@ -137,6 +155,23 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void Resume() //Spelet startas igen när man klickar på Resume knappen i pause menyn.
+    {
+        isPaused = false;
+        PauseMenu.SetActive(false); 
+        Time.timeScale = 1f; 
+    }
+
+    public void Options() //Options menyn öppnas när man klickar på Options knappen i paus menyn. 
+    {
+
+
+    }
+
+    public void Quit() //Spelet avslutas när man klickar på Quit knappen i paus menyn. 
+    {
+       //Application.Quit;
+    }
 
 
 

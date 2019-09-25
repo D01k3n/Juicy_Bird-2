@@ -8,6 +8,7 @@ TagManager:
   - Back
   - Mid
   - Front
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
